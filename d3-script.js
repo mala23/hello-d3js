@@ -5,5 +5,12 @@ function d3Script() {
     .data(dataset)
     .enter()
     .append("p")
-    .text("New paragraph")
+    .text(function(d) { return d })
+    .style("color", function(d) {
+      if (d > 15) {
+        return "red"
+      } else {
+        return "black"
+      }
+    })
 }
