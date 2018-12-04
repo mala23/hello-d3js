@@ -1,5 +1,5 @@
 function d3Script() {
-  var dataset = [ 5, 10, 15, 20, 25 ];
+  var dataset = [ 25, 7, 5, 26, 11 ];
 
   d3.select("#exercise01").selectAll("p")
     .data(dataset)
