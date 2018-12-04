@@ -1,3 +1,9 @@
 function d3Script() {
-  d3.select("body").append("p").text("new paragraph")
+  var dataset = [ 5, 10, 15, 20, 25 ];
+
+  d3.select("body").selectAll("p")
+    .data(dataset)
+    .enter()
+    .append("p")
+    .text("New paragraph")
 }
