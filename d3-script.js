@@ -42,7 +42,6 @@ function d3Script() {
     })
     .attr("cy", height/2)
     .attr("r", function(d) {
-      console.log(d)
       return d
     })
     .attr("fill", "yellow")
@@ -72,7 +71,6 @@ function d3Script() {
     })
     .attr("width", barsWidth / dataset.length - barsPadding)
     .attr("height", function(d) {
-      console.log(d)
       return d * 4
     })
     .attr("fill", function(d) {
@@ -95,4 +93,72 @@ function d3Script() {
     .attr("text-anchor", "middle")
     .attr("font-family", "sans-serif")
     .attr("font-size", "1rem")
+
+  var datasetScatterplot = [
+    ['Poultry', 3.3, 4.5],
+    ['Pork', 6.4, 1.8],
+    ['Beef', 25, 0.08],
+    ['Eggs', 2.3, 0.09],
+    ['Whole Milk', 0.7, 0.22]]
+
+  var widthScatterplot = 500
+  var heightScatterplot = 300
+  var paddingScatterplot = 80
+
+  var xScale = d3.scaleLinear()
+    .domain([0, 25])
+    //.domain([0, 3d.max(datasetScatterplot, function(d) { return d[1] })])
+    .range([0, widthScatterplot - paddingScatterplot])
+
+  var yScale = d3.scaleLinear()
+    .domain([0, 4.5])
+    //.domain([0, 3d.max(datasetScatterplot, function(d) { return d[2] })])
+    .range([heightScatterplot - paddingScatterplot, paddingScatterplot])
+
+  var rScale = d3.scaleLinear()
+    .domain([0, 4.5])
+    .range([5, 8])
+
+  var svgScatterplot = d3.select('#exercise14')
+    .append('svg')
+    .attr('width', widthScatterplot)
+    .attr('height', heightScatterplot)
+
+  svgScatterplot.selectAll('circle')
+    .data(datasetScatterplot)
+    .enter()
+    .append('circle')
+    .attr('cx', function(d) {
+      return xScale(d[1])
+    })
+    .attr('cy', function(d) {
+      return yScale(d[2])
+    })
+    .attr('r', function(d) {
+      return rScale(d[1])
+    })
+
+  svgScatterplot.selectAll("text")
+    .data(datasetScatterplot)
+    .enter()
+    .append('text')
+    .text(function(d) {
+      return d[1] + ',' + d[2]
+    })
+    .attr('x', function(d) {
+      return xScale(d[1])
+    })
+    .attr('y', function(d) {
+      return yScale(d[2])
+    })
+    .attr('font-family', 'sans-serif')
+    .attr('font-size', '1rem')
+    .attr('fill', 'red')
+
+  var xAxis = d3.axisBottom(xScale)
+
+  svgScatterplot.append("g")
+    .attr('class', 'axis')
+    .attr('transform', 'translate(0,' + (50 + (heightScatterplot - paddingScatterplot)) + ')')
+    .call(xAxis)
 }
