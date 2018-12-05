@@ -67,7 +67,9 @@ function d3Script() {
     .attr("x", function(d, i) {
       return i * (barsWidth / dataset.length)
     })
-    .attr("y", 0)
+    .attr("y", function(d) {
+      return barsHeight - d * 4
+    })
     .attr("width", barsWidth / dataset.length - barsPadding)
     .attr("height", function(d) {
       console.log(d)
