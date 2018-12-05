@@ -87,11 +87,12 @@ function d3Script() {
       return d
     })
     .attr("x", function(d, i) {
-      return i * (barsWidth / dataset.length) + (((barsWidth / dataset.length)) / 2 - 10)
+      return i * (barsWidth / dataset.length) + (barsWidth / dataset.length - barsPadding) / 2
     })
     .attr("y", function(d, i) {
       return barsHeight + 25
     })
+    .attr("text-anchor", "middle")
     .attr("font-family", "sans-serif")
     .attr("font-size", "1rem")
 }
