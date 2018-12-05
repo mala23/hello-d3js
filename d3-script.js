@@ -78,4 +78,20 @@ function d3Script() {
     .attr("fill", function(d) {
       return "rgb(0, 0, " + (d * 10) + ")"
     })
+
+  svgBars.selectAll("text")
+    .data(dataset)
+    .enter()
+    .append("text")
+    .text(function(d) {
+      return d
+    })
+    .attr("x", function(d, i) {
+      return i * (barsWidth / dataset.length) + (((barsWidth / dataset.length)) / 2 - 10)
+    })
+    .attr("y", function(d, i) {
+      return barsHeight + 25
+    })
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "1rem")
 }
