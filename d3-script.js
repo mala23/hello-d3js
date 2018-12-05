@@ -13,6 +13,7 @@ function d3Script() {
         return "black"
       }
     })
+
   d3.select("#exercise08").selectAll("div")
     .data(dataset)
     .enter()
@@ -22,4 +23,12 @@ function d3Script() {
       var barHeight = d * 5
       return barHeight + "px"
     })
+
+  var width = 500
+  var height = 50
+
+  var svg = d3.select("#exercise11")
+    .append("svg")
+    .attr("width", width)
+    .attr("height", height)
 }
