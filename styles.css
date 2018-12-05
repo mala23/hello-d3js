@@ -5,3 +5,11 @@
   background-color: teal;
   margin-right: 2px;
 }
+
+section {
+  margin-bottom: 30px;
+}
+
+svg {
+  overflow: visible;
+}
