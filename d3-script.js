@@ -156,6 +156,7 @@ function d3Script() {
     .attr('fill', 'red')
 
   var xAxis = d3.axisBottom(xScale)
+    .ticks(5)
 
   svgScatterplot.append("g")
     .attr('class', 'axis')
